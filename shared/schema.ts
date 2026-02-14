@@ -56,7 +56,7 @@ export const insertUserSchema = createInsertSchema(users).omit({ id: true });
 export const insertStudentSchema = createInsertSchema(students).omit({ id: true });
 export const insertAttendanceSchema = createInsertSchema(attendance).omit({ id: true });
 export const insertFeeSchema = createInsertSchema(fees).omit({ id: true });
-export const insertNoticeSchema = createInsertSchema(notices).omit({ id: true, date: true });
+export const insertNoticeSchema = createInsertSchema(notices).omit({ id: true });
 
 // === TYPES ===
 

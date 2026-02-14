@@ -138,7 +138,14 @@ export class MemStorage implements IStorage {
 
   async createStudent(insertStudent: InsertStudent): Promise<Student> {
     const id = this.studentIdCounter++;
-    const student: Student = { ...insertStudent, id, photoUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${insertStudent.name}` };
+    const student: Student = { 
+      ...insertStudent, 
+      id, 
+      photoUrl: insertStudent.photoUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${insertStudent.name}`,
+      address: insertStudent.address || null,
+      dob: insertStudent.dob || null,
+      medicalNotes: insertStudent.medicalNotes || null
+    };
     this.students.set(id, student);
     return student;
   }
@@ -158,7 +165,11 @@ export class MemStorage implements IStorage {
 
   async markAttendance(insertAttendance: InsertAttendance): Promise<Attendance> {
     const id = this.attendanceIdCounter++;
-    const record: Attendance = { ...insertAttendance, id };
+    const record: Attendance = { 
+      ...insertAttendance, 
+      id,
+      present: insertAttendance.present ?? true
+    };
     this.attendance.set(id, record);
     return record;
   }
@@ -182,7 +193,12 @@ export class MemStorage implements IStorage {
 
   async createNotice(insertNotice: InsertNotice): Promise<Notice> {
     const id = this.noticeIdCounter++;
-    const notice: Notice = { ...insertNotice, id, date: new Date().toISOString() };
+    const notice: Notice = { 
+      ...insertNotice, 
+      id, 
+      date: insertNotice.date || new Date().toISOString(),
+      type: insertNotice.type || "general"
+    };
     this.notices.set(id, notice);
     return notice;
   }
