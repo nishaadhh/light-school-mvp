@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from "wouter";
+import { Switch, Route, Redirect, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -32,33 +32,36 @@ function ProtectedRoute({
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Show Sidebar only for Admin & Teacher */}
-      {user.role !== 'parent' && <Sidebar />}
+      {user.role !== 'parent' ? <Sidebar /> : null}
       
       <main className="flex-1 overflow-y-auto">
         <Component />
       </main>
 
       {/* Show Mobile Nav only for Parent */}
-      {user.role === 'parent' && <MobileNav />}
+      {user.role === 'parent' ? <MobileNav /> : null}
     </div>
   );
+}
+
+function RootLogic() {
+  const [location] = useLocation();
+  const { user } = useAuth();
+
+  if (location === '/') {
+    if (!user) return <Redirect to="/login" />;
+    if (user.role === 'admin') return <Redirect to="/admin/dashboard" />;
+    if (user.role === 'teacher') return <Redirect to="/teacher/attendance" />;
+    return <Redirect to="/parent/home" />;
+  }
+
+  return <NotFound />;
 }
 
 function Router() {
   return (
     <Switch>
       <Route path="/login" component={Login} />
-      
-      {/* Root redirect logic */}
-      <Route path="/">
-        {(_params) => {
-          const { user } = useAuth();
-          if (!user) return <Redirect to="/login" />;
-          if (user.role === 'admin') return <Redirect to="/admin/dashboard" />;
-          if (user.role === 'teacher') return <Redirect to="/teacher/attendance" />;
-          return <Redirect to="/parent/home" />;
-        }}
-      </Route>
 
       {/* Admin Routes */}
       <Route path="/admin/dashboard">
@@ -68,7 +71,6 @@ function Router() {
         {() => <ProtectedRoute component={StudentList} allowedRoles={['admin']} />}
       </Route>
       <Route path="/admin/fees">
-        {/* Placeholder for Fees Page - reusing dashboard structure */}
         {() => <ProtectedRoute component={() => <div className="p-8 font-bold text-2xl text-gray-400">Fees Module Coming Soon</div>} allowedRoles={['admin']} />}
       </Route>
       <Route path="/admin/notices">
@@ -94,7 +96,8 @@ function Router() {
         {() => <ProtectedRoute component={Profile} allowedRoles={['parent']} />}
       </Route>
 
-      <Route component={NotFound} />
+      {/* Fallback for root and 404 */}
+      <Route path="/" component={RootLogic} />
     </Switch>
   );
 }
