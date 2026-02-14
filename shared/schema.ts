@@ -22,6 +22,8 @@ export const students = pgTable("students", {
   parentPhone: text("parent_phone").notNull(),
   photoUrl: text("photo_url"),
   address: text("address"),
+  dob: text("dob"),
+  medicalNotes: text("medical_notes"),
 });
 
 export const attendance = pgTable("attendance", {

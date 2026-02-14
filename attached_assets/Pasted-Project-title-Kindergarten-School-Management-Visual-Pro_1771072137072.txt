@@ -1,0 +1,67 @@
+Project title: Kindergarten School Management — Visual Prototype (LKG/UKG)
+
+Goal:
+Build a **clickable visual prototype** (NOT production) of a school management web app for an LKG/UKG kindergarten in :contentReference[oaicite:1]{index=1}. Use mock JSON data — no real DB or external API keys. The output should be a working local dev app the client can click through and understand.
+
+Tech stack:
+- Frontend: React (Vite) + TailwindCSS (mobile-first, PWA-friendly)
+- Backend: Node.js + Express (mock API serving JSON, no real DB)
+- Run commands: `npm install` then `npm run dev` (both frontend and backend via single command or concurrently)
+
+Deliverables (what to generate):
+1. A single repo scaffold with frontend and backend folders.
+2. Mock JSON data file with 8–10 sample students (Kerala-style names), 2 teachers, and sample notices & fees.
+3. React routes as listed below and simple UI for each page.
+4. Express server with endpoints that return mock JSON for the UI (no persistence).
+5. A README with run steps and a one-paragraph demo script the presenter can read.
+
+User roles & login:
+- Implement a simple Login screen that lets you pick a role: Admin / Teacher / Parent (no auth, role selector toggles views).
+- For Parent login, show the demo parent account tied to one sample student.
+
+Required pages & routes (exact):
+- `/` — Landing / role chooser
+- `/login` — Role selector login
+- `/admin/dashboard` — Admin dashboard cards: Students, Attendance, Fees, Staff, Notices
+- `/admin/students` — Student list table with search + Add Student modal (form UI only)
+- `/admin/fees` — Fee list (paid / pending) and sample receipt modal
+- `/admin/notices` — Create notice form and list of notices
+- `/teacher/attendance` — Class roster with fast bulk toggle (Present/Absent) and Save button
+- `/teacher/students` — Class student list, click → student profile
+- `/parent/home` — Mobile-styled home: Today attendance indicator, Recent Notice, Pay Fees (dummy)
+- `/parent/notices` — List of notices
+- `/parent/profile` — Student profile with attendance summary and medical notes
+
+Feature details (explicit behavior UI must show):
+- Student profile must show: name, class (LKG/UKG + section), DOB, parent phone, photo placeholder, medicalNotes.
+- Attendance page: show a checkbox/toggle next to each student; support “Mark all present” and an obvious Save button. On Save display a small toast “Attendance saved (mock)”.
+- Fees: show due date, amount, status. “Pay Now” should open a dummy modal with “Mock payment successful” message.
+- Notices: admin can create a notice (title + body + optional image upload control that stores a local blob URL). Notices appear in parent view.
+- Add Student modal should validate required fields and add to in-memory mock list (persist only for session).
+- UI styling: soft pastel palette, big rounded cards/icons, legible Malayalam-friendly font fallback. Mobile-first layout, admin can show a sidebar on wide screens.
+- Use sample classes: “LKG A”, “LKG B”, “UKG A”, “UKG B”.
+
+Mock data (provide in repo file `mock/data.json`):
+- 8–10 sample students (example names: Anu Nair, Aarav Varghese, Meera S, Alphy Thomas, Riya K, Devika P, Arjun S, Maya V). Include parent phone numbers and class assignments.
+- 2 sample teachers (name + phone + assigned class).
+- 3 sample notices and 6 mock fee records (mix of paid/pending).
+
+UI polish (must-haves for client demo):
+- Clean header with role label (Admin / Teacher / Parent) and a Logout button.
+- Admin dashboard shows simple numeric cards (Students: 12, Attendance Today: 12/12, Pending Fees: 3).
+- Teacher attendance flow must be demo-ready: clicking Save shows a preview of “notification” that would be sent to parent (text only).
+- Parent home must look like a mobile app — bottom nav icons (Home, Notices, Profile).
+- Provide one sample student profile screenshot (PNG) saved to `/assets/demo-student.png`.
+
+README:
+- Include exact run commands and a 3–4 line “presentation script” the client can read: what each role does and where to click (Admin → Students; Teacher → Attendance; Parent → Home).
+
+Constraints & IMPORTANT NOTES for the generator:
+- This is a **visual prototype**: do not implement real authentication, payments, or third-party SMS/OTP.
+- Use mock in-memory JSON only; state can reset on refresh.
+- Keep UI flows short and obvious — teacher attendance must be 2 taps per action.
+- Keep code tidy and modular so it can be converted into a real MERN app later.
+
+Output expectation:
+- Create all necessary files, a working dev server, and a README. If generator can produce a zip or Git repo, do it. Otherwise produce file tree and full source files in the response.
+

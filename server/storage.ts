@@ -67,18 +67,18 @@ export class MemStorage implements IStorage {
     // Users
     this.createUser({ username: "admin", password: "123", role: "admin", name: "Principal Lakshmi" });
     this.createUser({ username: "teacher", password: "123", role: "teacher", name: "Anjali Teacher" });
-    this.createUser({ username: "parent", password: "123", role: "parent", name: "Ramesh Kumar" });
+    this.createUser({ username: "parent", password: "123", role: "parent", name: "Mr. Rajesh Kumar" });
 
-    // Students (Kerala names)
+    // Students (Kerala names according to requirements)
     const studentData: InsertStudent[] = [
-      { name: "Aarav Nair", class: "LKG A", rollNo: 1, parentName: "Ramesh Nair", parentPhone: "9846012345", address: "Kochi, Kerala" },
-      { name: "Diya Menon", class: "LKG A", rollNo: 2, parentName: "Suresh Menon", parentPhone: "9846012346", address: "Trivandrum, Kerala" },
-      { name: "Vihaan Thomas", class: "LKG A", rollNo: 3, parentName: "George Thomas", parentPhone: "9846012347", address: "Kottayam, Kerala" },
-      { name: "Meenakshi Iyer", class: "UKG B", rollNo: 1, parentName: "Krishnan Iyer", parentPhone: "9846012348", address: "Palakkad, Kerala" },
-      { name: "Ishaan Pillai", class: "UKG B", rollNo: 2, parentName: "Vijayan Pillai", parentPhone: "9846012349", address: "Kollam, Kerala" },
-      { name: "Ananya Varghese", class: "UKG B", rollNo: 3, parentName: "Mathew Varghese", parentPhone: "9846012350", address: "Thrissur, Kerala" },
-      { name: "Muhammed Ryan", class: "LKG B", rollNo: 1, parentName: "Abdul Ryan", parentPhone: "9846012351", address: "Malappuram, Kerala" },
-      { name: "Devika Krishna", class: "LKG B", rollNo: 2, parentName: "Unnikrishnan", parentPhone: "9846012352", address: "Alappuzha, Kerala" },
+      { name: "Anu Nair", class: "LKG A", rollNo: 1, parentName: "Ramesh Nair", parentPhone: "9846012345", address: "Kochi, Kerala", dob: "2020-05-15", medicalNotes: "No allergies" },
+      { name: "Aarav Varghese", class: "LKG A", rollNo: 2, parentName: "Suresh Varghese", parentPhone: "9846012346", address: "Trivandrum, Kerala", dob: "2020-08-20", medicalNotes: "Mild asthma" },
+      { name: "Meera S", class: "LKG B", rollNo: 1, parentName: "George Thomas", parentPhone: "9846012347", address: "Kottayam, Kerala", dob: "2020-03-10", medicalNotes: "Peanut allergy" },
+      { name: "Alphy Thomas", class: "LKG B", rollNo: 2, parentName: "Thomas K", parentPhone: "9846012348", address: "Palakkad, Kerala", dob: "2020-11-25", medicalNotes: "None" },
+      { name: "Riya K", class: "UKG A", rollNo: 1, parentName: "Vijayan Pillai", parentPhone: "9846012349", address: "Kollam, Kerala", dob: "2019-02-14", medicalNotes: "None" },
+      { name: "Devika P", class: "UKG A", rollNo: 2, parentName: "Mathew Varghese", parentPhone: "9846012350", address: "Thrissur, Kerala", dob: "2019-06-30", medicalNotes: "None" },
+      { name: "Arjun S", class: "UKG B", rollNo: 1, parentName: "Abdul Ryan", parentPhone: "9846012351", address: "Malappuram, Kerala", dob: "2019-09-12", medicalNotes: "None" },
+      { name: "Maya V", class: "UKG B", rollNo: 2, parentName: "Unnikrishnan", parentPhone: "9846012352", address: "Alappuzha, Kerala", dob: "2019-12-05", medicalNotes: "None" },
     ];
     
     studentData.forEach(s => this.createStudent(s));
