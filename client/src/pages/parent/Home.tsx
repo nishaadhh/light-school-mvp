@@ -28,17 +28,36 @@ export default function ParentHome() {
         <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-white">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-white rounded-full p-1">
-              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aarav" alt="Student" className="w-full h-full rounded-full" />
+              <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'Aarav'}`} alt="Student" className="w-full h-full rounded-full" />
             </div>
             <div>
-              <h3 className="font-bold text-lg">Aarav Kumar</h3>
-              <p className="text-blue-100 text-sm">Class LKG A • Roll No. 12</p>
+              <h3 className="font-bold text-lg">{user?.name === 'Mr. Rajesh Kumar' ? 'Anu Nair' : 'Student Name'}</h3>
+              <p className="text-blue-100 text-sm">Class LKG A • Roll No. 1</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="px-6 -mt-8 space-y-6">
+        {/* Attendance Summary */}
+        <div className="bg-white p-5 rounded-2xl shadow-lg shadow-gray-200/50">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-3">Attendance Summary</p>
+          <div className="grid grid-cols-3 gap-2">
+            <div className="bg-green-50 p-3 rounded-xl text-center">
+              <p className="text-2xl font-bold text-green-600">18</p>
+              <p className="text-[10px] text-green-700 font-medium">Present</p>
+            </div>
+            <div className="bg-red-50 p-3 rounded-xl text-center">
+              <p className="text-2xl font-bold text-red-600">2</p>
+              <p className="text-[10px] text-red-700 font-medium">Absent</p>
+            </div>
+            <div className="bg-blue-50 p-3 rounded-xl text-center">
+              <p className="text-2xl font-bold text-blue-600">90%</p>
+              <p className="text-[10px] text-blue-700 font-medium">Total</p>
+            </div>
+          </div>
+        </div>
+
         {/* Attendance Status */}
         <div className="bg-white p-5 rounded-2xl shadow-lg shadow-gray-200/50 flex items-center justify-between">
           <div className="flex items-center gap-4">

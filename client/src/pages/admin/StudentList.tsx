@@ -70,6 +70,7 @@ export default function StudentList() {
                     <option value="LKG A">LKG A</option>
                     <option value="LKG B">LKG B</option>
                     <option value="UKG A">UKG A</option>
+                    <option value="UKG B">UKG B</option>
                   </select>
                 </div>
                 <div className="space-y-2">
