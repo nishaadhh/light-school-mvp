@@ -79,76 +79,131 @@ class MemStorage {
   }
 
   private seedData() {
-    // Users — superadmin + admin + 3 teachers + parent
+    // ─── Users (9 total) ───
     this.createUser({ username: "superadmin", password: "123", role: "superadmin", name: "System Owner" });
     this.createUser({ username: "admin", password: "123", role: "admin", name: "Principal Lakshmi" });
     this.createUser({ username: "teacher", password: "123", role: "teacher", name: "Anjali Teacher" });
     this.createUser({ username: "teacher2", password: "123", role: "teacher", name: "Priya Teacher" });
     this.createUser({ username: "teacher3", password: "123", role: "teacher", name: "Reshma Teacher" });
+    this.createUser({ username: "teacher4", password: "123", role: "teacher", name: "Divya Teacher" });
+    this.createUser({ username: "teacher5", password: "123", role: "teacher", name: "Meena Teacher" });
     this.createUser({ username: "parent", password: "123", role: "parent", name: "Mr. Rajesh Kumar" });
+    this.createUser({ username: "parent2", password: "123", role: "parent", name: "Mrs. Sneha Pillai" });
 
-    // Students - 12 Kerala names across 3 classes
+    // ─── Students (30 across 5 classes) ───
     const studentData: InsertStudent[] = [
-      // LKG A - 4 students
-      { name: "Anu Nair", class: "LKG A", rollNo: 1, parentName: "Ramesh Nair", parentPhone: "9846012345", address: "Kochi, Kerala", dob: "2020-05-15", medicalNotes: "No allergies" },
-      { name: "Aarav Varghese", class: "LKG A", rollNo: 2, parentName: "Suresh Varghese", parentPhone: "9846012346", address: "Trivandrum, Kerala", dob: "2020-08-20", medicalNotes: "Mild asthma" },
-      { name: "Aisha Rahman", class: "LKG A", rollNo: 3, parentName: "Abdul Rahman", parentPhone: "9846012353", address: "Kozhikode, Kerala", dob: "2020-04-10", medicalNotes: "None" },
-      { name: "Advaith Menon", class: "LKG A", rollNo: 4, parentName: "Krishnan Menon", parentPhone: "9846012354", address: "Kannur, Kerala", dob: "2020-07-22", medicalNotes: "Lactose intolerant" },
+      // LKG A — 6 students (Anjali Teacher)
+      { name: "Anu Nair", class: "LKG A", rollNo: 1, parentName: "Ramesh Nair", parentPhone: "9846012345", address: "Fort Kochi, Ernakulam", dob: "2021-05-15", medicalNotes: "No allergies" },
+      { name: "Aarav Varghese", class: "LKG A", rollNo: 2, parentName: "Suresh Varghese", parentPhone: "9846012346", address: "Pattom, Trivandrum", dob: "2021-08-20", medicalNotes: "Mild asthma — uses inhaler" },
+      { name: "Aisha Rahman", class: "LKG A", rollNo: 3, parentName: "Abdul Rahman", parentPhone: "9846012353", address: "Kozhikode Beach Road", dob: "2021-04-10", medicalNotes: "None" },
+      { name: "Advaith Menon", class: "LKG A", rollNo: 4, parentName: "Krishnan Menon", parentPhone: "9846012354", address: "Thavakkara, Kannur", dob: "2021-07-22", medicalNotes: "Lactose intolerant" },
+      { name: "Lakshmi Das", class: "LKG A", rollNo: 5, parentName: "Mohan Das", parentPhone: "9846012370", address: "Kakkanad, Kochi", dob: "2021-01-18", medicalNotes: "None" },
+      { name: "Vivaan Pillai", class: "LKG A", rollNo: 6, parentName: "Sneha Pillai", parentPhone: "9846012371", address: "Vyttila, Kochi", dob: "2021-11-03", medicalNotes: "Egg allergy" },
 
-      // LKG B - 4 students
-      { name: "Meera S", class: "LKG B", rollNo: 1, parentName: "George Thomas", parentPhone: "9846012347", address: "Kottayam, Kerala", dob: "2020-03-10", medicalNotes: "Peanut allergy" },
-      { name: "Alphy Thomas", class: "LKG B", rollNo: 2, parentName: "Thomas K", parentPhone: "9846012348", address: "Palakkad, Kerala", dob: "2020-11-25", medicalNotes: "None" },
-      { name: "Nikhil Krishnan", class: "LKG B", rollNo: 3, parentName: "Vijay Krishnan", parentPhone: "9846012355", address: "Ernakulam, Kerala", dob: "2020-06-18", medicalNotes: "None" },
-      { name: "Sara Joseph", class: "LKG B", rollNo: 4, parentName: "Joseph Mathew", parentPhone: "9846012356", address: "Pathanamthitta, Kerala", dob: "2020-09-05", medicalNotes: "None" },
+      // LKG B — 6 students (Priya Teacher)
+      { name: "Meera S", class: "LKG B", rollNo: 1, parentName: "George Thomas", parentPhone: "9846012347", address: "Changanassery, Kottayam", dob: "2021-03-10", medicalNotes: "Peanut allergy" },
+      { name: "Alphy Thomas", class: "LKG B", rollNo: 2, parentName: "Thomas K", parentPhone: "9846012348", address: "Palakkad Town", dob: "2021-11-25", medicalNotes: "None" },
+      { name: "Nikhil Krishnan", class: "LKG B", rollNo: 3, parentName: "Vijay Krishnan", parentPhone: "9846012355", address: "Aluva, Ernakulam", dob: "2021-06-18", medicalNotes: "None" },
+      { name: "Sara Joseph", class: "LKG B", rollNo: 4, parentName: "Joseph Mathew", parentPhone: "9846012356", address: "Thiruvalla, Pathanamthitta", dob: "2021-09-05", medicalNotes: "None" },
+      { name: "Ishaan Nambiar", class: "LKG B", rollNo: 5, parentName: "Rajeev Nambiar", parentPhone: "9846012372", address: "Perinthalmanna, Malappuram", dob: "2021-02-28", medicalNotes: "None" },
+      { name: "Fatima Begum", class: "LKG B", rollNo: 6, parentName: "Hussain Ali", parentPhone: "9846012373", address: "Thalassery, Kannur", dob: "2021-12-14", medicalNotes: "Dust allergy" },
 
-      // UKG A - 4 students
-      { name: "Riya K", class: "UKG A", rollNo: 1, parentName: "Vijayan Pillai", parentPhone: "9846012349", address: "Kollam, Kerala", dob: "2019-02-14", medicalNotes: "None" },
-      { name: "Devika P", class: "UKG A", rollNo: 2, parentName: "Mathew Varghese", parentPhone: "9846012350", address: "Thrissur, Kerala", dob: "2019-06-30", medicalNotes: "None" },
-      { name: "Arjun S", class: "UKG A", rollNo: 3, parentName: "Sunil Kumar", parentPhone: "9846012357", address: "Malappuram, Kerala", dob: "2019-09-12", medicalNotes: "None" },
-      { name: "Maya V", class: "UKG A", rollNo: 4, parentName: "Unnikrishnan", parentPhone: "9846012358", address: "Alappuzha, Kerala", dob: "2019-12-05", medicalNotes: "None" },
+      // UKG A — 6 students (Reshma Teacher)
+      { name: "Riya K", class: "UKG A", rollNo: 1, parentName: "Vijayan Pillai", parentPhone: "9846012349", address: "Kollam Town", dob: "2020-02-14", medicalNotes: "None" },
+      { name: "Devika P", class: "UKG A", rollNo: 2, parentName: "Mathew Varghese", parentPhone: "9846012350", address: "Thrissur Swaraj Round", dob: "2020-06-30", medicalNotes: "None" },
+      { name: "Arjun S", class: "UKG A", rollNo: 3, parentName: "Sunil Kumar", parentPhone: "9846012357", address: "Manjeri, Malappuram", dob: "2020-09-12", medicalNotes: "None" },
+      { name: "Maya V", class: "UKG A", rollNo: 4, parentName: "Unnikrishnan", parentPhone: "9846012358", address: "Alappuzha Town", dob: "2020-12-05", medicalNotes: "None" },
+      { name: "Kabir Sheikh", class: "UKG A", rollNo: 5, parentName: "Salim Sheikh", parentPhone: "9846012374", address: "Kasaragod Town", dob: "2020-03-19", medicalNotes: "None" },
+      { name: "Ananya Raj", class: "UKG A", rollNo: 6, parentName: "Deepak Raj", parentPhone: "9846012375", address: "Nedumangad, Trivandrum", dob: "2020-08-07", medicalNotes: "Glasses prescribed" },
+
+      // UKG B — 6 students (Divya Teacher)
+      { name: "Rohit Menon", class: "UKG B", rollNo: 1, parentName: "Anil Menon", parentPhone: "9846012376", address: "Muvattupuzha, Ernakulam", dob: "2020-01-23", medicalNotes: "None" },
+      { name: "Sneha Krishnan", class: "UKG B", rollNo: 2, parentName: "Mahesh Krishnan", parentPhone: "9846012377", address: "Guruvayoor, Thrissur", dob: "2020-05-11", medicalNotes: "None" },
+      { name: "Mohammed Riyas", class: "UKG B", rollNo: 3, parentName: "Abdul Riyas", parentPhone: "9846012378", address: "Kondotty, Malappuram", dob: "2020-10-02", medicalNotes: "None" },
+      { name: "Diya Nair", class: "UKG B", rollNo: 4, parentName: "Gopinath Nair", parentPhone: "9846012379", address: "Attingal, Trivandrum", dob: "2020-07-15", medicalNotes: "Mild eczema" },
+      { name: "Vihaan George", class: "UKG B", rollNo: 5, parentName: "Elias George", parentPhone: "9846012380", address: "Pala, Kottayam", dob: "2020-04-28", medicalNotes: "None" },
+      { name: "Thanvi S", class: "UKG B", rollNo: 6, parentName: "Suresh Babu", parentPhone: "9846012381", address: "Irinjalakuda, Thrissur", dob: "2020-11-30", medicalNotes: "None" },
+
+      // Nursery — 6 students (Meena Teacher)
+      { name: "Kiara Philip", class: "Nursery", rollNo: 1, parentName: "Philip Varghese", parentPhone: "9846012382", address: "Chengannur, Alappuzha", dob: "2022-01-10", medicalNotes: "None" },
+      { name: "Aadhya Mohan", class: "Nursery", rollNo: 2, parentName: "Mohan Kumar", parentPhone: "9846012383", address: "Chalakudy, Thrissur", dob: "2022-04-22", medicalNotes: "None" },
+      { name: "Ryan Fernandez", class: "Nursery", rollNo: 3, parentName: "Daniel Fernandez", parentPhone: "9846012384", address: "Fort Kochi", dob: "2022-07-08", medicalNotes: "None" },
+      { name: "Nandana R", class: "Nursery", rollNo: 4, parentName: "Radhakrishnan", parentPhone: "9846012385", address: "Wadakkanchery, Thrissur", dob: "2022-03-14", medicalNotes: "Milk allergy" },
+      { name: "Zayan Hussain", class: "Nursery", rollNo: 5, parentName: "Faisal Hussain", parentPhone: "9846012386", address: "Tirur, Malappuram", dob: "2022-09-19", medicalNotes: "None" },
+      { name: "Myra Suresh", class: "Nursery", rollNo: 6, parentName: "Suresh Nair", parentPhone: "9846012387", address: "Perumbavoor, Ernakulam", dob: "2022-06-25", medicalNotes: "None" },
     ];
 
     studentData.forEach(s => this.createStudent(s));
 
-    // Notices - 6 notices with varied types
+    // ─── Notices (10 across event/general/urgent) ───
     const noticesData = [
-      { title: "Onam Celebration", content: "School will be celebrating Onam on Friday. Students should come in traditional attire (kasavu mundu/set saree).", type: "event", date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-      { title: "Parent Teacher Meeting", content: "PTM for LKG A is scheduled for next Saturday at 10 AM. Please ensure attendance.", type: "general", date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
-      { title: "Annual Day Preparations", content: "Annual Day will be held on March 15th. Costume requirements will be shared next week.", type: "event", date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
-      { title: "Fee Payment Reminder", content: "Kindly clear pending fees for the month of June by the 10th to avoid late charges.", type: "general", date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
-      { title: "Independence Day Celebration", content: "School will celebrate Independence Day on August 15th. Flag hoisting at 9 AM.", type: "event", date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString() },
-      { title: "Health Checkup Camp", content: "Free dental and eye checkup camp for all students on July 20th. Consent forms attached.", type: "general", date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() }
+      { title: "Republic Day Celebration", content: "Republic Day will be celebrated on January 26th. Flag hoisting at 9 AM followed by cultural performances by UKG students.", type: "event", date: new Date(Date.now() - 0.5 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "Annual Day — Save the Date!", content: "Our Annual Day is on March 15th at Town Hall Auditorium. Costume fittings begin next week. All parents are invited.", type: "event", date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "Parent Teacher Meeting — LKG", content: "PTM for LKG A & LKG B is scheduled for Saturday, Feb 22nd at 10 AM. Please bring your child's progress card.", type: "general", date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "February Fee Reminder", content: "Kindly pay February fees (₹3,500) before February 10th to avoid late charges of ₹100. Pay online or at the school office.", type: "general", date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "Sports Day Registration", content: "Sports Day is on Feb 28th. Register your child for events: Running Race, Spoon & Lemon, Sack Race. Forms available at reception.", type: "event", date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "Health Checkup Camp", content: "Free dental and eye checkup camp for all students on Feb 20th. Consent forms must be signed and returned by Feb 18th.", type: "general", date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "School Closed — Maha Shivaratri", content: "School will remain closed on February 26th (Wednesday) on account of Maha Shivaratri.", type: "general", date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "Art Competition Winners", content: "Congratulations to Anu Nair (1st), Riya K (2nd), and Meera S (3rd) for winning the inter-class drawing competition!", type: "event", date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "New Library Books Available", content: "20 new picture books and story books have been added to the school library. Students can borrow one book per week.", type: "general", date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString() },
+      { title: "Uniform & ID Card Reminder", content: "All students must wear proper school uniform daily. Replacement ID cards available at office for ₹50.", type: "general", date: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString() },
     ];
     noticesData.forEach(n => this.createNotice(n));
 
-    // Fees - Mixed paid/pending statuses
-    this.students.forEach((student, index) => {
-      const isPaid = index % 3 !== 0;
-      const dueDate = new Date();
-      dueDate.setDate(10);
-      this.fees.set(this.feeIdCounter, {
-        id: this.feeIdCounter++,
-        studentId: student.id,
-        amount: 2500,
-        month: "June 2024",
-        status: isPaid ? "paid" : "pending",
-        dueDate: dueDate.toISOString(),
-        paidDate: isPaid ? new Date().toISOString() : null
+    // ─── Fees (multi-month, realistic) ───
+    const months = ["October 2025", "November 2025", "December 2025", "January 2026", "February 2026"];
+    this.students.forEach((student) => {
+      months.forEach((month, mi) => {
+        const dueDate = new Date(2025, 9 + mi, 10);
+        const isCurrentMonth = mi === months.length - 1;
+        const isPaid = !isCurrentMonth && !(mi === months.length - 2 && student.id % 4 === 0);
+        this.fees.set(this.feeIdCounter, {
+          id: this.feeIdCounter++,
+          studentId: student.id,
+          amount: 3500,
+          month,
+          status: isPaid ? "paid" : "pending",
+          dueDate: dueDate.toISOString(),
+          paidDate: isPaid ? new Date(dueDate.getTime() + Math.random() * 5 * 24 * 60 * 60 * 1000).toISOString() : null
+        });
       });
     });
 
-    // Audit Logs - seed with realistic data
+    // ─── Attendance (last 5 school days) ───
+    const today = new Date();
+    for (let d = 1; d <= 5; d++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - d);
+      if (date.getDay() === 0 || date.getDay() === 6) continue;
+      const dateStr = date.toISOString().split("T")[0];
+      this.students.forEach((student) => {
+        const present = Math.random() > 0.1;
+        this.markAttendance({
+          studentId: student.id,
+          date: dateStr,
+          status: present ? "present" : "absent",
+          markedBy: "teacher"
+        });
+      });
+    }
+
+    // ─── Audit Logs (15 entries) ───
     this.auditLogs = [
-      { id: 1, user: "Principal Lakshmi", role: "admin", action: "Created", target: "Student: Anu Nair", details: "Added new student to LKG A", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 2, user: "System Owner", role: "superadmin", action: "Updated", target: "School Settings", details: "Changed academic year to 2025-2026", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 3, user: "Principal Lakshmi", role: "admin", action: "Created", target: "Notice: Onam Celebration", details: "Published event notice for all classes", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 4, user: "Anjali Teacher", role: "teacher", action: "Updated", target: "Attendance: LKG A", details: "Marked attendance for 4 students", timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 5, user: "System Owner", role: "superadmin", action: "Created", target: "User: Principal Lakshmi", details: "Created admin account", timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 6, user: "Principal Lakshmi", role: "admin", action: "Updated", target: "Fee: Anu Nair", details: "Marked June fee as paid (₹2,500)", timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 7, user: "Priya Teacher", role: "teacher", action: "Created", target: "Activity: Art Class", details: "Uploaded daily activity for LKG B", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 8, user: "System Owner", role: "superadmin", action: "Backup", target: "System Data", details: "Full system backup completed", timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 9, user: "Principal Lakshmi", role: "admin", action: "Deleted", target: "Notice: Old Holiday List", details: "Removed outdated notice", timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString() },
-      { id: 10, user: "Reshma Teacher", role: "teacher", action: "Updated", target: "Attendance: UKG A", details: "Marked attendance for 4 students", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 1, user: "Principal Lakshmi", role: "admin", action: "Created", target: "Student: Kiara Philip", details: "Enrolled new student in Nursery", timestamp: new Date(Date.now() - 0.5 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 2, user: "Anjali Teacher", role: "teacher", action: "Updated", target: "Attendance: LKG A", details: "Marked attendance for 6 students", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 3, user: "Principal Lakshmi", role: "admin", action: "Created", target: "Notice: Republic Day", details: "Published event notice for all classes", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 4, user: "System Owner", role: "superadmin", action: "Updated", target: "School Settings", details: "Updated phone number and email", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 5, user: "Priya Teacher", role: "teacher", action: "Created", target: "Activity: Rhyme Time", details: "Posted rhyme session for LKG B", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 6, user: "Principal Lakshmi", role: "admin", action: "Updated", target: "Fee: Aarav Varghese", details: "Marked January fee as paid (₹3,500)", timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 7, user: "Reshma Teacher", role: "teacher", action: "Updated", target: "Attendance: UKG A", details: "Marked attendance for 6 students", timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 8, user: "System Owner", role: "superadmin", action: "Created", target: "User: Divya Teacher", details: "Created teacher account for UKG B", timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 9, user: "Divya Teacher", role: "teacher", action: "Created", target: "Activity: Art & Craft", details: "Paper flower making — UKG B", timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 10, user: "Principal Lakshmi", role: "admin", action: "Created", target: "Student: Myra Suresh", details: "Enrolled new student in Nursery", timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 11, user: "Meena Teacher", role: "teacher", action: "Updated", target: "Attendance: Nursery", details: "Marked attendance for 6 students", timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 12, user: "System Owner", role: "superadmin", action: "Backup", target: "System Data", details: "Full system backup completed", timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 13, user: "Principal Lakshmi", role: "admin", action: "Deleted", target: "Notice: Old Holiday List", details: "Removed outdated 2024 holiday list", timestamp: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 14, user: "System Owner", role: "superadmin", action: "Updated", target: "Roles & Permissions", details: "Updated teacher permissions for notices", timestamp: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString() },
+      { id: 15, user: "Principal Lakshmi", role: "admin", action: "Created", target: "Report: Monthly Summary", details: "Generated January 2026 performance report", timestamp: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString() },
     ];
   }
 
@@ -271,11 +326,11 @@ class MemStorage {
         total: allFees.reduce((s, f) => s + f.amount, 0),
       },
       attendanceSummary: [
-        { day: "Mon", present: 11, absent: 1 },
-        { day: "Tue", present: 10, absent: 2 },
-        { day: "Wed", present: 12, absent: 0 },
-        { day: "Thu", present: 9, absent: 3 },
-        { day: "Fri", present: 11, absent: 1 },
+        { day: "Mon", present: 27, absent: 3 },
+        { day: "Tue", present: 25, absent: 5 },
+        { day: "Wed", present: 29, absent: 1 },
+        { day: "Thu", present: 24, absent: 6 },
+        { day: "Fri", present: 28, absent: 2 },
       ]
     };
   }
