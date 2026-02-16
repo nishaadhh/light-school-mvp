@@ -1,17 +1,18 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, buildUrl } from "@shared/routes";
 import { type InsertAttendance } from "@shared/schema";
+import { API_BASE_URL } from "@/lib/config";
 
 export function useAttendance(date?: string) {
   return useQuery({
     queryKey: [api.attendance.list.path, date],
     queryFn: async () => {
       // Build URL with query params
-      const url = date 
+      const url = date
         ? `${api.attendance.list.path}?date=${date}`
         : api.attendance.list.path;
-        
-      const res = await fetch(url);
+
+      const res = await fetch(`${API_BASE_URL}${url}`);
       if (!res.ok) throw new Error("Failed to fetch attendance");
       return api.attendance.list.responses[200].parse(await res.json());
     },
@@ -22,7 +23,7 @@ export function useMarkAttendance() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: InsertAttendance) => {
-      const res = await fetch(api.attendance.mark.path, {
+      const res = await fetch(`${API_BASE_URL}${api.attendance.mark.path}`, {
         method: api.attendance.mark.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -42,7 +43,7 @@ export function useStudentAttendance(studentId: number) {
     queryKey: [api.attendance.getForStudent.path, studentId],
     queryFn: async () => {
       const url = buildUrl(api.attendance.getForStudent.path, { id: studentId });
-      const res = await fetch(url);
+      const res = await fetch(`${API_BASE_URL}${url}`);
       if (!res.ok) throw new Error("Failed to fetch student attendance");
       return api.attendance.getForStudent.responses[200].parse(await res.json());
     },

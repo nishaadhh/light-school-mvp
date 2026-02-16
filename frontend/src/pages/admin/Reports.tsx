@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart3, Users, DollarSign, CalendarCheck } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { API_BASE_URL } from "@/lib/config";
 
 const COLORS = ['#3b82f6', '#22c55e', '#a855f7', '#f59e0b', '#ec4899'];
 
 export default function Reports() {
     const { data: reports } = useQuery({
         queryKey: ["/api/reports"],
-        queryFn: () => fetch("http://localhost:5000/api/reports").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/reports`).then(r => r.json()),
     });
 
     return (

@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Users, Eye, MessageSquare, Search } from "lucide-react";
 import { useState } from "react";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function TeacherClass() {
     const { data: students } = useQuery({
         queryKey: ["/api/students"],
-        queryFn: () => fetch("http://localhost:5000/api/students").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/students`).then(r => r.json()),
     });
 
     const [search, setSearch] = useState("");

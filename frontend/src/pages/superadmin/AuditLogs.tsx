@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { ClipboardList, Filter, Search, User, Clock } from "lucide-react";
 import { useState } from "react";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function AuditLogs() {
     const { data: logs } = useQuery({
         queryKey: ["/api/audit-logs"],
-        queryFn: () => fetch("http://localhost:5000/api/audit-logs").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/audit-logs`).then(r => r.json()),
     });
 
     const [filter, setFilter] = useState("all");
@@ -61,8 +62,8 @@ export default function AuditLogs() {
                             key={f}
                             onClick={() => setFilter(f)}
                             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === f
-                                    ? 'bg-primary text-white shadow-md'
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                ? 'bg-primary text-white shadow-md'
+                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
                         >
                             {f === 'all' ? 'All' : f.charAt(0).toUpperCase() + f.slice(1)}

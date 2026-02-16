@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Megaphone, Plus, Send, Camera } from "lucide-react";
 import { useState } from "react";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function TeacherNotices() {
     const { data: notices } = useQuery({
         queryKey: ["/api/notices"],
-        queryFn: () => fetch("http://localhost:5000/api/notices").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/notices`).then(r => r.json()),
     });
 
     const [showForm, setShowForm] = useState(false);

@@ -1,12 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, buildUrl } from "@shared/routes";
 import { type InsertStudent } from "@shared/schema";
+import { API_BASE_URL } from "@/lib/config";
 
 export function useStudents() {
   return useQuery({
     queryKey: [api.students.list.path],
     queryFn: async () => {
-      const res = await fetch(api.students.list.path);
+      const res = await fetch(`${API_BASE_URL}${api.students.list.path}`);
       if (!res.ok) throw new Error("Failed to fetch students");
       return api.students.list.responses[200].parse(await res.json());
     },
@@ -18,7 +19,7 @@ export function useStudent(id: number) {
     queryKey: [api.students.get.path, id],
     queryFn: async () => {
       const url = buildUrl(api.students.get.path, { id });
-      const res = await fetch(url);
+      const res = await fetch(`${API_BASE_URL}${url}`);
       if (!res.ok) throw new Error("Failed to fetch student");
       return api.students.get.responses[200].parse(await res.json());
     },
@@ -30,7 +31,7 @@ export function useCreateStudent() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: InsertStudent) => {
-      const res = await fetch(api.students.create.path, {
+      const res = await fetch(`${API_BASE_URL}${api.students.create.path}`, {
         method: api.students.create.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

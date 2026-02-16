@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Users, GraduationCap, DollarSign, Shield, Server, Clock, Activity, Database } from "lucide-react";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function SuperAdminDashboard() {
     const { data: stats } = useQuery({
         queryKey: ["/api/system-stats"],
-        queryFn: () => fetch("http://localhost:5000/api/system-stats").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/system-stats`).then(r => r.json()),
     });
 
     const cards = [

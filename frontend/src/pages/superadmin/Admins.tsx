@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Users, Plus, Shield, Mail, MoreVertical } from "lucide-react";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function ManageAdmins() {
     const { data: users } = useQuery({
         queryKey: ["/api/users"],
-        queryFn: () => fetch("http://localhost:5000/api/users").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/users`).then(r => r.json()),
     });
 
     const admins = users?.filter((u: any) => u.role === 'admin' || u.role === 'superadmin') || [];
@@ -103,9 +104,9 @@ export default function ManageAdmins() {
                                     <td className="py-3 px-5 text-sm text-gray-600">@{user.username}</td>
                                     <td className="py-3 px-5">
                                         <span className={`px-2 py-1 rounded-full text-xs font-bold ${user.role === 'superadmin' ? 'bg-purple-100 text-purple-700' :
-                                                user.role === 'admin' ? 'bg-blue-100 text-blue-700' :
-                                                    user.role === 'teacher' ? 'bg-green-100 text-green-700' :
-                                                        'bg-pink-100 text-pink-700'
+                                            user.role === 'admin' ? 'bg-blue-100 text-blue-700' :
+                                                user.role === 'teacher' ? 'bg-green-100 text-green-700' :
+                                                    'bg-pink-100 text-pink-700'
                                             }`}>{user.role}</span>
                                     </td>
                                     <td className="py-3 px-5">

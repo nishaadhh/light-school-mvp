@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Settings, Save, School, MapPin, Phone, Mail, Calendar, Award } from "lucide-react";
 import { useState } from "react";
+import { API_BASE_URL } from "@/lib/config";
 
 export default function SchoolSettings() {
     const { data: settings } = useQuery({
         queryKey: ["/api/settings"],
-        queryFn: () => fetch("http://localhost:5000/api/settings").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/settings`).then(r => r.json()),
     });
 
     const [saved, setSaved] = useState(false);

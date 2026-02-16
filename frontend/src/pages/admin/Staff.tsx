@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Users, Plus, GraduationCap, BookOpen, MoreVertical } from "lucide-react";
+import { API_BASE_URL } from "@/lib/config";
 
 const classAssignments: Record<string, string> = {
     "Anjali Teacher": "LKG A",
@@ -17,7 +18,7 @@ const activityData: Record<string, { classes: number; attendance: string; lastAc
 export default function StaffManagement() {
     const { data: staff } = useQuery({
         queryKey: ["/api/staff"],
-        queryFn: () => fetch("http://localhost:5000/api/staff").then(r => r.json()),
+        queryFn: () => fetch(`${API_BASE_URL}/api/staff`).then(r => r.json()),
     });
 
     const teachers = staff || [];
